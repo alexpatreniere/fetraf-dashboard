@@ -1,13 +1,14 @@
 import "./globals.css";
-import Providers from "./providers";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "FETRAF Dashboard",
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
-      <body className="bg-[var(--bg)] text-[var(--fg)] antialiased">
-        <Providers>{children}</Providers>
-      </body>
+    <html suppressHydrationWarning>
+      <body>{children}</body>
     </html>
   );
 }
-
