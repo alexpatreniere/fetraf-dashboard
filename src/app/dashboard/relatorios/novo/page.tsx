@@ -1,0 +1,81 @@
+"use client";
+
+import { useState } from "react";
+
+export default function NovoRelatorioPage() {
+  const [form, setForm] = useState({
+    nome: "",
+    tipo: "Filiados", // ex.: Filiados | Contribuições | Financeiro
+    periodoInicio: "",
+    periodoFim: "",
+    formato: "csv" as "csv" | "pdf",
+    filtros: "" // opcional (JSON simples / texto)
+  });
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+  const [ok, setOk] = useState<string | null>(null);
+
+  async function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setErr(null); setOk(null); setLoading(true);
+    try {
+      // Envia o que existir; backend pode ignorar campos desconhecidos
+      const res = await fetch("/api/relatorios", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const text = await res.text();
+      let data: any = null; try { data = JSON.parse(text); } catch { data = { raw: text }; }
+      if (!res.ok) throw new Error(data?.error || data?.message || data?.raw || `HTTP ${res.status}`);
+      setOk("Relatório solicitado.");
+      const id = data?.id ?? data?.data?.id;
+      window.location.href = id ? `/dashboard/relatorios/${id}` : "/dashboard/relatorios";
+    } catch (e: any) {
+      setErr(e.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className="max-w-xl space-y-4">
+      <h1 className="text-lg font-semibold">Novo Relatório</h1>
+      <form onSubmit={onSubmit} className="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-4 space-y-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <input className="rounded-xl border px-3 py-2" placeholder="Nome (opcional)"
+                 value={form.nome} onChange={(e)=>setForm(f=>({...f, nome:e.target.value}))}/>
+          <select className="rounded-xl border px-3 py-2"
+                  value={form.tipo} onChange={(e)=>setForm(f=>({...f, tipo:e.target.value}))}>
+            <option>Filiados</option>
+            <option>Contribuições</option>
+            <option>Financeiro</option>
+          </select>
+          <input className="rounded-xl border px-3 py-2" type="date"
+                 placeholder="Início" value={form.periodoInicio}
+                 onChange={(e)=>setForm(f=>({...f, periodoInicio:e.target.value}))}/>
+          <input className="rounded-xl border px-3 py-2" type="date"
+                 placeholder="Fim" value={form.periodoFim}
+                 onChange={(e)=>setForm(f=>({...f, periodoFim:e.target.value}))}/>
+          <select className="rounded-xl border px-3 py-2"
+                  value={form.formato} onChange={(e)=>setForm(f=>({...f, formato:e.target.value as any}))}>
+            <option value="csv">CSV</option>
+            <option value="pdf">PDF</option>
+          </select>
+          <input className="rounded-xl border px-3 py-2 sm:col-span-2" placeholder='Filtros (ex.: {"sindicato":"FETRAF"})'
+                 value={form.filtros} onChange={(e)=>setForm(f=>({...f, filtros:e.target.value}))}/>
+        </div>
+
+        {err && <p className="text-sm text-rose-500">{err}</p>}
+        {ok && <p className="text-sm text-emerald-600">{ok}</p>}
+
+        <div className="flex gap-2">
+          <button disabled={loading} className="rounded-xl border px-3 py-2 text-sm">
+            {loading ? "Enviando..." : "Gerar"}
+          </button>
+          <a href="/dashboard/relatorios" className="rounded-xl border px-3 py-2 text-sm">Cancelar</a>
+        </div>
+      </form>
+    </div>
+  );
+}

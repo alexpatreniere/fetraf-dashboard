@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/* ===================== */
+/* Paleta via CSS vars   */
+/* ===================== */
+:root {
+  --brand: #2f6fed;
+  --brand-foreground: #ffffff;
+
+  --brand-50: #eef3ff;
+  --brand-100: #dfe9ff;
+  --brand-200: #bcd0ff;
+  --brand-300: #92b2ff;
+  --brand-400: #6f97fa;
+  --brand-500: #2f6fed;
+  --brand-600: #2254c3;
+  --brand-700: #1b439d;
+  --brand-800: #17397f;
+  --brand-900: #122c60;
+
+  --canvas: #ffffff;
+  --surface: #f9f9fb;
+  --surface-2: #f1f1f4;
+  --surface-3: #e8e8ed;
+  --fg: #1a1a1a;
+  --muted: #6b7280;
+  --border: #d4d4d8;
+
+  --danger: #ef4444;
+  --success: #22c55e;
+  --warning: #f59e0b;
+}
+
+.dark {
+  --brand: #5c85ff;
+  --brand-foreground: #0b1020;
+
+  --canvas: #0b0f19;
+  --surface: #111827;
+  --surface-2: #1f2937;
+  --surface-3: #2d3748;
+  --fg: #f3f4f6;
+  --muted: #9ca3af;
+  --border: #374151;
+
+  --danger: #f87171;
+  --success: #4ade80;
+  --warning: #fbbf24;
+}
+
+/* ===================== */
+/* Base                  */
+/* ===================== */
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--canvas);
+    color: var(--fg);
+  }
+}
+
+/* ===================== */
+/* Utilitárias           */
+/* ===================== */
+@layer components {
+  .card {
+    @apply rounded-2xl border p-4 shadow-sm;
+    background-color: var(--surface);
+    border-color: var(--border);
+    color: var(--fg);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border px-3 py-2 text-sm font-medium transition;
+    background-color: var(--surface);
+    border-color: var(--border);
+    color: var(--fg);
+  }
+
+  .btn:hover {
+    background-color: color-mix(in oklch, var(--surface), black 6%);
+  }
+
+  .btn:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  .btn-brand {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition;
+    background-color: var(--brand);
+    color: #fff !important;
+    border: 1px solid color-mix(in oklch, var(--brand), black 12%);
+  }
+
+  .btn-brand:hover {
+    background-color: color-mix(in oklch, var(--brand), black 12%);
+  }
+
+  .btn-brand:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  .input {
+    @apply w-full rounded-xl border px-3 py-2 text-sm outline-none;
+    background-color: var(--canvas); /* corrigido */
+    border-color: var(--border);
+    color: var(--fg);
+  }
+
+  .input::placeholder {
+    color: var(--muted);
+  }
+
+  .input:focus {
+    /* anel de foco discreto que funciona nos dois temas */
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--brand), transparent 82%);
+    border-color: color-mix(in oklch, var(--brand), var(--border) 65%);
+  }
+
+  .chip {
+    @apply rounded-xl border px-2 py-1 text-xs;
+    background-color: color-mix(in oklch, var(--surface), white 0%);
+    border-color: var(--border);
+    color: var(--fg);
+  }
+
+  .muted {
+    color: var(--muted);
+  }
+
+  .tab {
+    @apply rounded-xl border px-3 py-1.5 text-sm font-medium transition;
+    background-color: var(--surface);
+    border-color: var(--border);
+    color: var(--muted);
+  }
+
+  .tab-active {
+    background-color: var(--brand);
+    border-color: var(--brand);
+    color: var(--brand-foreground);
+  }
+}
