@@ -1,0 +1,62 @@
+﻿APP ROUTER AUDIT
+Projeto: C:\Users\alexp\fetraf-dashboard
+Gerado: 2025-09-19 09:25:34
+Next:  | config: next.config.mjs
+App dir exists: True | Pages (legacy) exists: False
+
+--- Layouts & Problemas ---
+src/app/layout.tsx -> OK
+src/app/dashboard/layout.tsx -> OK
+
+--- Pages ---
+src/app/page.tsx
+src/app/api/sindicatos/[id]/editar/page.tsx
+src/app/dashboard/page.tsx
+src/app/dashboard/configuracoes/page.tsx
+src/app/dashboard/configuracoes/usuarios/page.tsx
+src/app/dashboard/configuracoes/usuarios/novo/page.tsx
+src/app/dashboard/configuracoes/usuarios/[id]/page.tsx
+src/app/dashboard/configuracoes/usuarios/[id]/editar/page.tsx
+src/app/dashboard/contribuicoes/page.tsx
+src/app/dashboard/contribuicoes/novo/page.tsx
+src/app/dashboard/contribuicoes/[id]/page.tsx
+src/app/dashboard/filiados/page.tsx
+src/app/dashboard/filiados/novo/page.tsx
+src/app/dashboard/filiados/[id]/page.tsx
+src/app/dashboard/filiados/[id]/editar/page.tsx
+src/app/dashboard/relatorios/page.tsx
+src/app/dashboard/relatorios/novo/page.tsx
+src/app/dashboard/relatorios/[id]/page.tsx
+src/app/dashboard/relatorios/[id]/editar/page.tsx
+src/app/dashboard/sindicatos/page.tsx
+src/app/dashboard/sindicatos/novo/page.tsx
+src/app/dashboard/sindicatos/[id]/page.tsx
+src/app/login/page.tsx
+src/app/login/reset/page.tsx
+src/app/login/reset/[token]/page.tsx
+
+--- Heads ---
+src/app/head.tsx
+
+--- Route handlers ---
+src/app/api/auth/login/route.ts
+src/app/api/auth/logout/route.ts
+src/app/api/auth/me/route.ts
+src/app/api/contribuicoes/route.ts
+src/app/api/contribuicoes/[id]/route.ts
+src/app/api/filiados/route.ts
+src/app/api/filiados/[id]/route.ts
+src/app/api/relatorios/route.ts
+src/app/api/relatorios/[id]/route.ts
+src/app/api/relatorios/[id]/download/route.ts
+src/app/api/settings/route.ts
+src/app/api/sindicatos/route.ts
+src/app/api/sindicatos/[id]/route.ts
+src/app/api/usuarios/route.ts
+src/app/api/usuarios/[id]/route.ts
+src/app/api/usuarios/[id]/reset/route.ts
+src/app/auth/login/route.ts
+src/app/auth/logout/route.ts
+src/app/auth/reset/confirm/route.ts
+src/app/auth/reset/request/route.ts
+
