@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
-import { useMe } from "@/src/lib/useMe";
+import { useMe } from "@/lib/useMe";
 import Link from "next/link";
 
 function initials(name?: string) {
@@ -22,7 +22,7 @@ export default function ClientShell({ children }: { children: ReactNode }) {
 
           <div className="flex items-center gap-3">
             {loading && (
-              <span className="text-xs text-neutral-500">Carregando perfil…</span>
+              <span className="text-xs text-neutral-500">Carregando perfilâ€¦</span>
             )}
             {error && (
               <button
@@ -38,15 +38,15 @@ export default function ClientShell({ children }: { children: ReactNode }) {
                 {initials(me?.name || me?.email)}
               </div>
               <div className="leading-tight">
-                <div className="text-sm font-medium">{me?.name || "Usuário"}</div>
-                <div className="text-xs text-neutral-500">{me?.role || "—"}</div>
+                <div className="text-sm font-medium">{me?.name || "UsuÃ¡rio"}</div>
+                <div className="text-xs text-neutral-500">{me?.role || "â€”"}</div>
               </div>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Conteúdo */}
+      {/* ConteÃºdo */}
       <main className="mx-auto max-w-7xl w-full px-4 py-6">
         {children}
       </main>
