@@ -1,7 +1,7 @@
-﻿"use client";
-
-import Link from "next/link";
+﻿import Link from "next/link";
 // src/app/dashboard/relatorios/Client.tsx
+"use client";
+
 import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { apiFetch } from "@/lib/api";
@@ -321,6 +321,5 @@ export default function RelatoriosClient() {
     </PageLayout>
   );
 }
-
 
 

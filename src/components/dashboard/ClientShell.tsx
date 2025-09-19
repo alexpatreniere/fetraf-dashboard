@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
@@ -17,7 +17,7 @@ import {
   Bell,
   DollarSign,
 } from "lucide-react";
-import { ThemeToggle } from "@/components/ThemeToggle"; // ajuste se seu ThemeToggle estiver em outro caminho
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 type IconType = LucideIcon;
 
@@ -84,7 +84,7 @@ export default function ClientShell({ children }: { children: ReactNode }) {
               <div className="flex items-center gap-2">
                 {imgOk ? (
                   <Image
-                    src="/fetraf.png" // <- usando a imagem que você testou
+                    src="/fetraf.png"
                     alt="FETRAF"
                     width={28}
                     height={28}
@@ -94,18 +94,8 @@ export default function ClientShell({ children }: { children: ReactNode }) {
                     onError={() => setImgOk(false)}
                   />
                 ) : (
-                  // fallback: <img> direto
-                  <img
-                    src="/fetraf.png"
-                    alt="FETRAF"
-                    width={28}
-                    height={28}
-                    className="rounded"
-                    onError={(e) => {
-                      // evita loop infinito caso algo muito estranho aconteça
-                      (e.currentTarget as HTMLImageElement).src = "";
-                    }}
-                  />
+                  // fallback simples
+                  <Image src="/logo.svg" alt="Logo" width={120} height={32} />
                 )}
                 <span className="text-sm font-semibold">FETRAF</span>
               </div>
@@ -183,9 +173,9 @@ export default function ClientShell({ children }: { children: ReactNode }) {
               />
             </div>
 
-            <a href="/dashboard/filiados/novo" className="btn-brand">
+            <Link href="/dashboard/filiados/novo" className="btn-brand">
               Novo Filiado
-            </a>
+            </Link>
 
             <button type="button" className="btn" aria-label="Notificações">
               <Bell size={18} />

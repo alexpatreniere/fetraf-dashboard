@@ -1,6 +1,6 @@
-﻿"use client";
+﻿import Link from "next/link";
+"use client";
 
-import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import PageLayout from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
@@ -412,6 +412,5 @@ function KpiCard({ title, value, foot, href }: { title: string; value: string; f
     <a href={href} className="block transition hover:-translate-y-0.5">{content}</a>
   ) : content;
 }
-
 
 

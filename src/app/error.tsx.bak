@@ -1,6 +1,6 @@
-﻿"use client";
-
 // src/app/error.tsx
+"use client";
+
 import { useEffect } from "react";
 
 export default function GlobalError({
@@ -35,7 +35,7 @@ export default function GlobalError({
               className="rounded border px-3 py-2"
               onClick={() => (window.location.href = "/")}
             >
-              Voltar ao inÃ­cio
+              Voltar ao início
             </button>
           </div>
         </div>
@@ -43,4 +43,3 @@ export default function GlobalError({
     </html>
   );
 }
-

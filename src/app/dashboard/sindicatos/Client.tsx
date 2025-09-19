@@ -1,6 +1,7 @@
-// src/app/dashboard/sindicatos/Client.tsx
-"use client";
+﻿"use client";
 
+import Link from "next/link";
+// src/app/dashboard/sindicatos/Client.tsx
 import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { apiFetch } from "@/lib/api";
@@ -157,7 +158,7 @@ export default function SindicatosClient() {
     >
       <span className="inline-flex items-center gap-1">
         {label}
-        {sort === field && <span aria-hidden className="text-xs">{dir === "asc" ? "▲" : "▼"}</span>}
+        {sort === field && <span aria-hidden className="text-xs">{dir === "asc" ? "â–²" : "â–¼"}</span>}
       </span>
     </th>
   );
@@ -166,14 +167,14 @@ export default function SindicatosClient() {
     <PageLayout>
       <PageHeader
         title="Sindicatos"
-        subtitle="Cadastro e manutenção"
+        subtitle="Cadastro e manutenÃ§Ã£o"
         actions={
           <div className="flex w-full items-center gap-2 sm:w-auto">
             <form onSubmit={submitSearch} className="flex-1 sm:w-72">
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Buscar por nome, CNPJ…"
+                placeholder="Buscar por nome, CNPJâ€¦"
                 className="input"
               />
             </form>
@@ -182,25 +183,25 @@ export default function SindicatosClient() {
               value={limit}
               onChange={(e) => pushQuery({ limit: Number(e.target.value), page: 1 })}
               className="input max-w-28"
-              title="Itens por página"
+              title="Itens por pÃ¡gina"
             >
               {[10, 25, 50].map((n) => (
                 <option key={n} value={n}>
-                  {n}/página
+                  {n}/pÃ¡gina
                 </option>
               ))}
             </select>
 
-            <a href="/dashboard/sindicatos/novo" className="btn btn-brand">
+            <Link href="/dashboard/sindicatos/novo" className="btn btn-brand">
               Novo Sindicato
-            </a>
+            </Link>
           </div>
         }
       />
 
       <div className="card p-0 overflow-x-auto">
         {loading ? (
-          <div className="p-6 text-sm muted">Carregando…</div>
+          <div className="p-6 text-sm muted">Carregandoâ€¦</div>
         ) : err ? (
           <div className="p-6 text-sm text-[var(--danger)]">Erro: {err}</div>
         ) : data.length === 0 ? (
@@ -211,7 +212,7 @@ export default function SindicatosClient() {
               <tr>
                 {th("Nome", "nome")}
                 {th("CNPJ", "cnpj")}
-                {th("Município", "municipio")}
+                {th("MunicÃ­pio", "municipio")}
                 {th("UF", "uf")}
                 {th("Status", "status")}
                 {th("Criado em", "criado_em")}
@@ -254,10 +255,10 @@ export default function SindicatosClient() {
         <div className="text-xs muted">
           {total != null ? (
             <>
-              Mostrando <b>{showingFrom || 0}</b>–<b>{showingTo}</b> de <b>{total}</b>
+              Mostrando <b>{showingFrom || 0}</b>â€“<b>{showingTo}</b> de <b>{total}</b>
             </>
           ) : (
-            <>Página <b>{page}</b>{pageCount ? <> de <b>{pageCount}</b></> : null}</>
+            <>PÃ¡gina <b>{page}</b>{pageCount ? <> de <b>{pageCount}</b></> : null}</>
           )}
         </div>
 
@@ -270,10 +271,13 @@ export default function SindicatosClient() {
             onClick={() => pushQuery({ page: page + 1 })}
             disabled={hasMore === false || (total != null && pageCount != null && page >= pageCount)}
           >
-            Próxima
+            PrÃ³xima
           </button>
         </div>
       </div>
     </PageLayout>
   );
 }
+
+
+

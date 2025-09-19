@@ -1,13 +1,14 @@
-import "./globals.css";
+// app/layout.tsx
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "FETRAF Dashboard",
+  title: "Sistema FETRAF",
+  description: "Painel administrativo",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );

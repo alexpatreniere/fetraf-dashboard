@@ -3,14 +3,14 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "scripts": {
-    "dev": "next dev -p 3000",
-    "build": "next build",
-    "build:nolint": "next build --no-lint",
-    "build:notypes": "next build --no-lint --no-typecheck",
-    "start": "next start -p 3000",
-    "lint": "eslint ."
-  },
+"scripts": {
+  "dev": "next dev -p 3000",
+  "build": "next build",
+  "build:nolint": "next build --no-lint",
+  "build:notypes": "next build --no-lint --no-typecheck",
+  "start": "next start -p 3000",
+  "lint": "eslint ."
+},
   "dependencies": {
     "framer-motion": "12.23.13",
     "lucide-react": "0.544.0",
