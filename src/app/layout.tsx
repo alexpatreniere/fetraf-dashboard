@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Sistema FETRAF",
-  description: "FederaÃ§Ã£o dos Trabalhadores do Ramo Financeiro do RJ e ES",
+  description: "Federação dos Trabalhadores do Ramo Financeiro do RJ e ES",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -12,6 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pt-BR">
       <body className="font-sans antialiased bg-background text-foreground">
         {children}
+        <Footer />
       </body>
     </html>
   );

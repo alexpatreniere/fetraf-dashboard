@@ -1,0 +1,29 @@
+== git status ==
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   public/logo-dark.svg
+	modified:   public/logo-light.svg
+	modified:   src/app/login/page.tsx
+	modified:   src/components/Brand.tsx
+	modified:   src/components/Footer.tsx
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	__snapshot__/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+== git remote -v ==
+origin	https://github.com/alexpatreniere/fetraf-dashboard (fetch)
+origin	https://github.com/alexpatreniere/fetraf-dashboard (push)
+
+== git log -n 5 ==
+b0be68f fix(routes): remover rotas duplicadas em /auth, root redirect para /login, footer no layout
+e82cd6c chore(ui): inserir Footer no layout raiz
+82fae6e fix(app-router): normalizar todos os layouts; head.tsx; root page; dashboard Layout com ClientShell; remover pages legado
+85bdffb fix(app-router): restaurar layout/head; criar page raiz; garantir /login; limpar duplicatas
+8a985b8 feat(routes): criar /login quando ausente
