@@ -52,11 +52,9 @@ function NavItem({
 
 export default function ClientShell({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
-
-  // controla fallback da imagem
   const [imgOk, setImgOk] = useState(true);
 
-  // Persistência simples do estado do sidebar
+  // persistência do estado do sidebar
   useEffect(() => {
     try {
       const saved = localStorage.getItem("shell:sidebarOpen");
@@ -79,12 +77,12 @@ export default function ClientShell({ children }: { children: ReactNode }) {
           }`}
         >
           <div className="sticky top-4 flex h-[calc(100vh-2rem)] flex-col gap-4 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 shadow-soft">
-            {/* topo com logo e botão */}
+            {/* topo com marca do produto (FETRAF) e botão */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 {imgOk ? (
                   <Image
-                    src="/fetraf.png"
+                    src="/fetraf.png"       // marca institucional do sistema
                     alt="FETRAF"
                     width={28}
                     height={28}
@@ -94,8 +92,7 @@ export default function ClientShell({ children }: { children: ReactNode }) {
                     onError={() => setImgOk(false)}
                   />
                 ) : (
-                  // fallback simples
-                  <Image src="/logo.svg" alt="Logo" width={120} height={32} />
+                  <Image src="/fetraf.png" alt="FETRAF" width={28} height={28} />
                 )}
                 <span className="text-sm font-semibold">FETRAF</span>
               </div>
@@ -121,7 +118,7 @@ export default function ClientShell({ children }: { children: ReactNode }) {
               </ul>
             </nav>
 
-            {/* rodapé com usuário/ações */}
+            {/* rodapé da sidebar: usuário e tema (sem crédito de desenvolvedor aqui) */}
             <div className="mt-auto space-y-3">
               <div className="flex items-center justify-between rounded-xl border border-[var(--border)] px-3 py-2">
                 <div className="flex items-center gap-2 text-sm">
