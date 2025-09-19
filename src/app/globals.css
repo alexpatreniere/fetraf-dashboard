@@ -1,4 +1,6 @@
 @import "tailwindcss";
+img, svg { max-width: 100%; height: auto; }
+
 
 /* ===================== */
 /* Paleta via CSS vars   */

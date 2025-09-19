@@ -49,14 +49,13 @@ function BrandFooter() {
   );
 }
 
+// src/app/layout.tsx
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
-      <body>
-        {children}
-        {/* Rodapé global: copyright FETRAF + crédito Uptech */}
-        <BrandFooter />
-      </body>
+    <html lang="pt-BR">
+      <head><meta charSet="utf-8" /></head>
+      <body>{children}</body>
     </html>
   );
 }
+
